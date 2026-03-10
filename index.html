@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>United Trades Group — Where Construction Leaders Pool Their Power</title>
+  <meta name="description" content="United Trades Group is a by-invitation buying group for construction companies. Pool your purchasing power with vetted peers to unlock supplier rebates you'd never qualify for alone." />
+  <link rel="icon" href="public/logos/ut-brandmark-indigo-oxblood.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --oxblood: #7B2D3B;
+      --oxblood-light: hsl(349, 46%, 45%);
+      --oxblood-dim: hsl(349, 46%, 25%);
+      --oxblood-glow: hsla(349, 60%, 40%, 0.18);
+      --indigo: #1E293B;
+      --indigo-mid: hsl(217, 33%, 22%);
+      --indigo-light: hsl(217, 25%, 30%);
+      --cotton: #F5F0E8;
+      --cotton-dim: hsl(37, 30%, 88%);
+      --white: #ffffff;
+      --text-on-dark: hsl(37, 39%, 93%);
+      --text-muted-dark: hsl(217, 15%, 60%);
+      --text-muted-light: hsl(217, 20%, 45%);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--indigo);
+      background: var(--cotton);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Utilities ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(18, 24, 38, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 52px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(245,240,232,0.75);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--cotton); }
+    .btn-nav {
+      background: var(--oxblood);
+      color: var(--cotton) !important;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nav:hover { background: var(--oxblood-light); transform: translateY(-1px); }
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--cotton);
+      padding: 4px;
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--indigo);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(245,240,232,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,240,232,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, hsla(349, 60%, 35%, 0.22) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, hsla(349, 60%, 35%, 0.12) 0%, transparent 70%);
+      bottom: -100px;
+      right: -100px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 120px 0 100px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(123, 45, 59, 0.25);
+      border: 1px solid rgba(123, 45, 59, 0.5);
+      color: hsl(349, 80%, 78%);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--cotton);
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--oxblood-light);
+    }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--text-muted-dark);
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 44px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--oxblood);
+      color: var(--cotton);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      background: var(--oxblood-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(123, 45, 59, 0.4);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(245,240,232,0.75);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(245,240,232,0.18);
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .btn-ghost:hover {
+      color: var(--cotton);
+      border-color: rgba(245,240,232,0.4);
+      background: rgba(245,240,232,0.05);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted-dark);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--oxblood-light), transparent);
+      animation: scroll-anim 2s ease-in-out infinite;
+    }
+    @keyframes scroll-anim {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── Supplier Bar ─── */
+    #supplier-bar {
+      background: hsl(217, 33%, 13%);
+      padding: 18px 0;
+      border-top: 1px solid rgba(245,240,232,0.06);
+      border-bottom: 1px solid rgba(245,240,232,0.06);
+    }
+    .supplier-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+    .supplier-bar-label {
+      color: var(--text-muted-dark);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-right: 24px;
+      border-right: 1px solid rgba(245,240,232,0.1);
+    }
+    .supplier-ticker {
+      display: flex;
+      gap: 48px;
+      animation: ticker 22s linear infinite;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .supplier-ticker span {
+      color: rgba(245,240,232,0.5);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── Stats ─── */
+    #stats {
+      background: var(--oxblood);
+      padding: 72px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(245,240,232,0.15);
+    }
+    .stat-card {
+      background: var(--oxblood);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--cotton);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-num span { color: hsl(349, 80%, 82%); }
+    .stat-label {
+      font-size: 13px;
+      color: rgba(245,240,232,0.6);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Problem ─── */
+    #problem {
+      background: var(--cotton);
+      padding: 120px 0;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--oxblood);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: var(--indigo);
+      margin-bottom: 24px;
+    }
+    .section-body {
+      font-size: 17px;
+      color: var(--text-muted-light);
+      line-height: 1.75;
+    }
+    .section-body + .section-body { margin-top: 16px; }
+    .callout-box {
+      background: var(--indigo);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      color: var(--cotton);
+      position: relative;
+      overflow: hidden;
+    }
+    .callout-box::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--oxblood-glow) 0%, transparent 70%);
+    }
+    .callout-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .callout-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .callout-line:last-child { border-bottom: none; padding-bottom: 0; }
+    .callout-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(123, 45, 59, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .callout-icon svg { width: 18px; height: 18px; color: hsl(349, 80%, 75%); }
+    .callout-line-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cotton);
+      margin-bottom: 4px;
+    }
+    .callout-line-text p {
+      font-size: 13px;
+      color: rgba(245,240,232,0.55);
+      line-height: 1.5;
+    }
+
+    /* ─── How It Works ─── */
+    #how-it-works {
+      background: #fff;
+      padding: 120px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 72px;
+    }
+    .section-header .section-body {
+      font-size: 18px;
+      text-align: center;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: calc(33.33% - 0px);
+      right: calc(33.33% - 0px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--cotton-dim), var(--oxblood), var(--cotton-dim));
+      z-index: 0;
+    }
+    .step-card {
+      background: var(--cotton);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--indigo);
+      color: var(--cotton);
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .step-num::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--cotton-dim);
+    }
+    .step-card:nth-child(2) .step-num { background: var(--oxblood); }
+    .step-card:nth-child(2) .step-num::after { border-color: rgba(123, 45, 59, 0.3); }
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--indigo);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .step-desc {
+      font-size: 15px;
+      color: var(--text-muted-light);
+      line-height: 1.7;
+    }
+    .step-badge {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--oxblood);
+      background: rgba(123, 45, 59, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ─── Benefits Horizontal Scroll ─── */
+    #benefits {
+      background: var(--indigo);
+      padding: 100px 0;
+    }
+    .benefits-header {
+      margin-bottom: 56px;
+    }
+    .benefits-header .section-label { color: hsl(349, 80%, 75%); }
+    .benefits-header .section-title { color: var(--cotton); }
+    .benefits-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted-dark);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .scroll-hint svg { width: 18px; height: 18px; animation: hint-slide 2.5s ease-in-out infinite; }
+    @keyframes hint-slide {
+      0%, 100% { transform: translateX(0); opacity: 0.5; }
+      50% { transform: translateX(6px); opacity: 1; }
+    }
+    .benefits-track-outer {
+      overflow-x: auto;
+      margin: 0 -24px;
+      padding: 0 24px;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .benefits-track-outer::-webkit-scrollbar { display: none; }
+    .benefits-track-outer:active { cursor: grabbing; }
+    .benefits-track {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 8px;
+      width: max-content;
+    }
+    .benefit-card {
+      width: 300px;
+      flex-shrink: 0;
+      background: hsl(217, 33%, 17%);
+      border: 1px solid rgba(245,240,232,0.07);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(123, 45, 59, 0.5);
+    }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(123, 45, 59, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .benefit-icon svg { width: 24px; height: 24px; color: hsl(349, 80%, 75%); }
+    .benefit-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--cotton);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .benefit-desc {
+      font-size: 14px;
+      color: var(--text-muted-dark);
+      line-height: 1.65;
+    }
+
+    /* ─── Rebate Calculator ─── */
+    #rebate-calc {
+      background: var(--cotton);
+      padding: 120px 0;
+    }
+    .rebate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .rebate-viz {
+      background: var(--indigo);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .rebate-viz::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,45,59,0.2), transparent 70%);
+      pointer-events: none;
+    }
+    .rebate-viz-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+      margin-bottom: 16px;
+    }
+    .rebate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(245,240,232,0.07);
+    }
+    .rebate-row:last-child { border-bottom: none; }
+    .rebate-row-label { font-size: 14px; color: rgba(245,240,232,0.6); }
+    .rebate-row-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cotton);
+    }
+    .rebate-row-val.highlight {
+      color: hsl(349, 80%, 78%);
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+    /* Slider */
+    .calc-field { margin-bottom: 24px; position: relative; z-index: 1; }
+    .calc-field-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .calc-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+    }
+    .calc-val {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cotton);
+    }
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(245,240,232,0.12);
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--oxblood-light);
+      cursor: pointer;
+      border: 3px solid hsl(349, 80%, 78%);
+      box-shadow: 0 0 0 0 rgba(123,45,59,0.4);
+      transition: box-shadow 0.2s ease;
+    }
+    .calc-slider::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 0 6px rgba(123,45,59,0.25);
+    }
+    .calc-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--oxblood-light);
+      cursor: pointer;
+      border: 3px solid hsl(349, 80%, 78%);
+    }
+    .calc-range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 11px;
+      color: rgba(245,240,232,0.3);
+    }
+    /* Rate buttons */
+    .rate-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .rate-btn {
+      flex: 1;
+      padding: 8px 4px;
+      background: rgba(245,240,232,0.06);
+      border: 1px solid rgba(245,240,232,0.12);
+      border-radius: var(--radius);
+      color: rgba(245,240,232,0.5);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .rate-btn:hover { background: rgba(245,240,232,0.1); color: var(--cotton); }
+    .rate-btn-active {
+      background: rgba(123,45,59,0.3) !important;
+      border-color: rgba(123,45,59,0.7) !important;
+      color: hsl(349, 80%, 80%) !important;
+    }
+    /* Tier progress */
+    .calc-tier-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .tier-display {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cotton);
+      transition: color 0.3s ease;
+    }
+    .tier-display.tier-bronze { color: #cd7f32; }
+    .tier-display.tier-silver { color: #b8c4d0; }
+    .tier-display.tier-gold { color: #d4a842; }
+    .tier-progress-track {
+      height: 6px;
+      background: rgba(245,240,232,0.1);
+      border-radius: 3px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .tier-progress-bar {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #cd7f32, #b8c4d0, #d4a842);
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tier-progress-labels {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 11px;
+      color: rgba(245,240,232,0.35);
+    }
+    .tier-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+    .tier-badge.bronze { color: #cd7f32; border-color: rgba(205,127,50,0.4); background: rgba(205,127,50,0.1); }
+    .tier-badge.silver { color: #a8b2c0; border-color: rgba(168,178,192,0.4); background: rgba(168,178,192,0.1); }
+    .tier-badge.gold { color: #d4a842; border-color: rgba(212,168,66,0.4); background: rgba(212,168,66,0.1); }
+
+    /* ─── Testimonials ─── */
+    #testimonials {
+      background: hsl(217, 33%, 11%);
+      padding: 120px 0;
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .testimonials-header .section-label { color: hsl(349, 80%, 75%); }
+    .testimonials-header .section-title { color: var(--cotton); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: hsl(217, 33%, 15%);
+      border: 1px solid rgba(245,240,232,0.07);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+    }
+    .quote-mark {
+      font-size: 72px;
+      line-height: 0.5;
+      color: var(--oxblood);
+      font-family: Georgia, serif;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .testimonial-text {
+      font-size: 16px;
+      color: rgba(245,240,232,0.8);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--oxblood-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: hsl(349, 80%, 85%);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cotton);
+    }
+    .author-company {
+      font-size: 13px;
+      color: var(--text-muted-dark);
+    }
+    .testimonial-highlight {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--oxblood), transparent);
+    }
+
+    /* ─── Criteria ─── */
+    #criteria {
+      background: var(--cotton);
+      padding: 120px 0;
+    }
+    .criteria-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 72px;
+    }
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .criteria-card {
+      background: #fff;
+      border: 1px solid var(--cotton-dim);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .criteria-card:hover {
+      border-color: rgba(123, 45, 59, 0.3);
+      box-shadow: 0 8px 32px rgba(123, 45, 59, 0.08);
+      transform: translateY(-2px);
+    }
+    .criteria-num {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--oxblood);
+      line-height: 1;
+      opacity: 0.3;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .criteria-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--indigo);
+      margin-bottom: 8px;
+    }
+    .criteria-desc {
+      font-size: 14px;
+      color: var(--text-muted-light);
+      line-height: 1.65;
+    }
+
+    /* ─── Application CTA ─── */
+    #apply {
+      background: var(--indigo);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #apply::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,45,59,0.18) 0%, transparent 70%);
+    }
+    #apply::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      left: -200px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,45,59,0.12) 0%, transparent 70%);
+    }
+    .apply-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+    }
+    .apply-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: hsl(349, 80%, 75%);
+      margin-bottom: 16px;
+    }
+    .apply-title {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 700;
+      color: var(--cotton);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .apply-sub {
+      font-size: 17px;
+      color: var(--text-muted-dark);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .apply-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .apply-point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(245,240,232,0.75);
+    }
+    .apply-point svg {
+      width: 18px;
+      height: 18px;
+      color: hsl(349, 80%, 70%);
+      flex-shrink: 0;
+    }
+    .apply-form-card {
+      background: rgba(245,240,232,0.05);
+      border: 1px solid rgba(245,240,232,0.12);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cotton);
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 14px;
+      color: var(--text-muted-dark);
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.6);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: rgba(245,240,232,0.07);
+      border: 1px solid rgba(245,240,232,0.14);
+      border-radius: var(--radius);
+      padding: 11px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--cotton);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder { color: rgba(245,240,232,0.3); }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--oxblood-light);
+      background: rgba(245,240,232,0.1);
+    }
+    .form-group select option { background: var(--indigo); color: var(--cotton); }
+    .form-submit {
+      width: 100%;
+      background: var(--oxblood);
+      color: var(--cotton);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .form-submit:hover {
+      background: var(--oxblood-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(123, 45, 59, 0.4);
+    }
+    .form-note {
+      font-size: 12px;
+      color: rgba(245,240,232,0.35);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: hsl(217, 33%, 8%);
+      padding: 64px 0 32px;
+      border-top: 1px solid rgba(245,240,232,0.06);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 48px;
+    }
+    .footer-brand img { height: 36px; margin-bottom: 16px; }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-muted-dark);
+      line-height: 1.65;
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+    .footer-contact {
+      font-size: 14px;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.8;
+    }
+    .footer-contact a { color: hsl(349, 80%, 70%); }
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(245,240,232,0.55);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--cotton); }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(245,240,232,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(245,240,232,0.3);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 13px;
+      color: rgba(245,240,232,0.3);
+      transition: color var(--transition);
+    }
+    .footer-legal a:hover { color: rgba(245,240,232,0.6); }
+
+    /* ─── Success State ─── */
+    .form-success {
+      text-align: center;
+      padding: 32px 0;
+      display: none;
+    }
+    .form-success svg {
+      width: 48px;
+      height: 48px;
+      color: hsl(142, 71%, 55%);
+      margin: 0 auto 16px;
+    }
+    .form-success h3 { font-size: 20px; color: var(--cotton); margin-bottom: 8px; }
+    .form-success p { font-size: 14px; color: var(--text-muted-dark); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .problem-grid,
+      .rebate-grid,
+      .apply-inner { grid-template-columns: 1fr; gap: 48px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-grid > div:first-child { grid-column: 1 / -1; }
+      .criteria-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .apply-form-card { padding: 28px 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .benefits-header-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav id="main-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo" aria-label="United Trades Group">
+          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades Group" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#testimonials">Members</a></li>
+          <li><a href="#criteria">Who Qualifies</a></li>
+          <li><a href="https://app.u-trades.com/login">Member Login</a></li>
+          <li><a href="#apply" class="btn-nav">Request an Invitation</a></li>
+        </ul>
+        <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow fade-up">
+          <span class="eyebrow-dot"></span>
+          By Invitation Only
+        </div>
+        <h1 class="hero-headline fade-up stagger-1">
+          Your purchases are<br><em>already earning rebates.</em><br>
+          You just aren't collecting them.
+        </h1>
+        <p class="hero-sub fade-up stagger-2">
+          United Trades Group pools the purchasing power of vetted construction
+          companies to unlock supplier rebate programs that individual companies
+          can't access alone. Same suppliers. Same purchases. Significantly more back.
+        </p>
+        <div class="hero-actions fade-up stagger-3">
+          <a href="#apply" class="btn-primary">
+            Request an Invitation
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-ghost">
+            See How It Works
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ─── Supplier Ticker ─── -->
+  <div id="supplier-bar">
+    <div class="container">
+      <div class="supplier-bar-inner">
+        <span class="supplier-bar-label">Why Members Join</span>
+        <div style="overflow:hidden;flex:1;position:relative;">
+          <div style="display:flex;gap:0;">
+            <div class="supplier-ticker">
+              <span>No supplier switching required</span>
+              <span>Quarterly earnings distributions</span>
+              <span>Invitation-only membership</span>
+              <span>Complete purchase confidentiality</span>
+              <span>Tier-based rebates that grow with your volume</span>
+              <span>Pooled purchasing power</span>
+              <span>Detailed earnings statements every quarter</span>
+              <span>Collective negotiating strength</span>
+              <span>No supplier switching required</span>
+              <span>Quarterly earnings distributions</span>
+              <span>Invitation-only membership</span>
+              <span>Complete purchase confidentiality</span>
+              <span>Tier-based rebates that grow with your volume</span>
+              <span>Pooled purchasing power</span>
+              <span>Detailed earnings statements every quarter</span>
+              <span>Collective negotiating strength</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Stats ─── -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-up">
+          <div class="stat-num">
+            <span>$</span><span class="count-up" data-target="2800000" data-prefix="$" data-format="money">0</span>
+          </div>
+          <div class="stat-label">Returned to Members Last Year</div>
+        </div>
+        <div class="stat-card fade-up stagger-1">
+          <div class="stat-num">
+            <span class="count-up" data-target="3.25" data-suffix="%" data-decimal="true">0</span><span>%</span>
+          </div>
+          <div class="stat-label">Maximum Effective Rebate Rate</div>
+        </div>
+        <div class="stat-card fade-up stagger-2">
+          <div class="stat-num">
+            <span class="count-up" data-target="14" data-suffix="">0</span><span>+</span>
+          </div>
+          <div class="stat-label">Active Supplier Programs</div>
+        </div>
+        <div class="stat-card fade-up stagger-3">
+          <div class="stat-num">
+            <span class="count-up" data-target="94" data-suffix="">0</span><span>%</span>
+          </div>
+          <div class="stat-label">Annual Member Retention</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── The Problem ─── -->
+  <section id="problem">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="fade-up">
+          <p class="section-label">The Reality</p>
+          <h2 class="section-title">Your supplier knows exactly what you're worth to them.</h2>
+          <p class="section-body">
+            Suppliers offer tiered rebate programs — but access depends entirely on volume.
+            A mid-sized construction company buying $1.5M in lumber annually gets a different
+            deal than one buying $15M. That's not a secret. It's policy.
+          </p>
+          <p class="section-body" style="margin-top:16px;">
+            Most of our members qualified perfectly well on their own — they just lacked the
+            leverage to prove it to suppliers who only negotiate with buyers at scale.
+            That's what we fix.
+          </p>
+        </div>
+        <div class="callout-box fade-up stagger-2">
+          <div class="callout-lines">
+            <div class="callout-line">
+              <div class="callout-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="callout-line-text">
+                <strong>Rebates you didn't know existed</strong>
+                <p>Suppliers run programs they never advertise publicly. You need to be in the room to know about them.</p>
+              </div>
+            </div>
+            <div class="callout-line">
+              <div class="callout-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="callout-line-text">
+                <strong>Volume thresholds you can't hit alone</strong>
+                <p>Gold-tier rebate rates often require $5M+ in annual purchases from a single account. Together, we're always there.</p>
+              </div>
+            </div>
+            <div class="callout-line">
+              <div class="callout-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="callout-line-text">
+                <strong>Time you don't have to negotiate</strong>
+                <p>Supplier rebate negotiations take months. Our team handles all of it. You just report your purchases.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How It Works ─── -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-label">The Process</p>
+        <h2 class="section-title">Simple by design. Powerful by scale.</h2>
+        <p class="section-body">Three steps between you and the rebates your purchasing volume already deserves.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-up stagger-1">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Apply &amp; Get Vetted</h3>
+          <p class="step-desc">Submit your application. We evaluate annual purchase volume, trade category, years in business, and geographic fit. We're selective because the group's value depends on who's in it.</p>
+          <span class="step-badge">Selective Admission</span>
+        </div>
+        <div class="step-card fade-up stagger-2">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Buy as You Always Have</h3>
+          <p class="step-desc">No supplier switching. No new accounts to open. Your existing supplier relationships stay exactly as they are. Each month, submit a simple purchase report through our member portal.</p>
+          <span class="step-badge">Zero Disruption</span>
+        </div>
+        <div class="step-card fade-up stagger-3">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Rebates Flow Back to You</h3>
+          <p class="step-desc">We pool member purchase volume, present it to suppliers as collective buying power, and distribute rebates back to members quarterly — transparently, with a full earnings statement every cycle.</p>
+          <span class="step-badge">Quarterly Distribution</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Benefits Horizontal Scroll ─── -->
+  <section id="benefits">
+    <div class="container">
+      <div class="benefits-header fade-up">
+        <div class="benefits-header-row">
+          <div>
+            <p class="section-label">Member Benefits</p>
+            <h2 class="section-title" style="margin-bottom:0;">Everything the group gives you.</h2>
+          </div>
+          <div class="scroll-hint" aria-hidden="true">
+            <span>Scroll to explore</span>
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="benefits-track-outer" id="benefits-track-outer">
+      <div class="benefits-track" style="padding-left:max(24px, calc((100vw - 1160px)/2 + 24px));">
+        <div class="benefit-card fade-up">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="benefit-title">Rebates on Purchases You're Already Making</h3>
+          <p class="benefit-desc">No behavior change required. You're already spending the money. We just make sure you're getting something back for it.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-1">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="benefit-title">Supplier Relationships Negotiated at Scale</h3>
+          <p class="benefit-desc">We present collective member volume to suppliers. What you couldn't negotiate on your own becomes a straightforward conversation when we speak for the group.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-2">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="benefit-title">Seamless Monthly Reporting</h3>
+          <p class="benefit-desc">Submit once a month through our member portal. Our platform handles reconciliation, calculation, and distribution. You get a statement. That's it.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-3">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="benefit-title">Complete Confidentiality</h3>
+          <p class="benefit-desc">Your pricing, volume, and supplier relationships stay private. Members never see each other's numbers. We aggregate, not expose.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-4">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3 class="benefit-title">Tier-Based Earnings That Grow With You</h3>
+          <p class="benefit-desc">Higher annual purchase volume unlocks better rebate rates. As your business grows, your effective rebate rate grows with it — automatically.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-5">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="benefit-title">Vetted Member Network</h3>
+          <p class="benefit-desc">Everyone at the table went through the same vetting you did. The group is only as strong as its members, and we take that seriously.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-6">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="benefit-title">Fast, Transparent Distribution</h3>
+          <p class="benefit-desc">Rebates distributed quarterly once supplier payments clear. Detailed earnings statements every cycle showing exactly what you earned and how it was calculated.</p>
+        </div>
+        <!-- spacer -->
+        <div style="width:max(24px, calc((100vw - 1160px)/2 + 24px));flex-shrink:0;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Rebate Calculator Visual ─── -->
+  <section id="rebate-calc">
+    <div class="container">
+      <div class="rebate-grid">
+        <div class="rebate-viz fade-up" id="rebate-viz">
+          <p class="rebate-viz-label">Estimate Your Annual Rebate</p>
+
+          <!-- Volume Slider -->
+          <div class="calc-field">
+            <div class="calc-field-row">
+              <span class="calc-label">Annual Purchase Volume</span>
+              <span class="calc-val" id="vol-display">$3.5M</span>
+            </div>
+            <input type="range" class="calc-slider" id="vol-slider"
+              min="500000" max="10000000" step="50000" value="3500000"
+              oninput="updateCalc()" />
+            <div class="calc-range-labels"><span>$500K</span><span>$10M+</span></div>
+          </div>
+
+          <!-- Rate Buttons -->
+          <div class="calc-field">
+            <span class="calc-label">Supplier Rebate Rate</span>
+            <div class="rate-options">
+              <button class="rate-btn" onclick="setRate(2.5,this)">2.5%</button>
+              <button class="rate-btn" onclick="setRate(3.0,this)">3.0%</button>
+              <button class="rate-btn" onclick="setRate(4.0,this)">4.0%</button>
+              <button class="rate-btn rate-btn-active" onclick="setRate(5.0,this)">5.0%</button>
+            </div>
+          </div>
+
+          <!-- Tier Display -->
+          <div class="calc-tier-row">
+            <div>
+              <div class="rebate-viz-label" style="margin-bottom:4px;">Membership Tier</div>
+              <div class="tier-display tier-silver" id="tier-display">Silver</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="rebate-viz-label" style="margin-bottom:4px;">Your Effective Rate</div>
+              <div class="tier-display tier-silver" id="rate-display">3.0%</div>
+            </div>
+          </div>
+
+          <!-- Tier Progress Bar -->
+          <div class="tier-progress-track">
+            <div class="tier-progress-bar" id="tier-bar" style="width:18%"></div>
+          </div>
+          <div class="tier-progress-labels">
+            <span class="tier-badge bronze">Bronze</span>
+            <span>$2M</span>
+            <span class="tier-badge silver">Silver</span>
+            <span>$5M</span>
+            <span class="tier-badge gold">Gold</span>
+          </div>
+
+          <!-- Result -->
+          <div style="height:1px;background:rgba(245,240,232,0.1);margin:4px 0 16px;"></div>
+          <div class="rebate-row" style="padding:0;">
+            <span class="rebate-row-label" style="font-size:15px;color:rgba(245,240,232,0.75);">Estimated quarterly payout</span>
+            <span class="rebate-row-val highlight" id="calc-result">$9,000</span>
+          </div>
+          <div class="rebate-row" style="padding:10px 0 0;">
+            <span class="rebate-row-label" style="font-size:13px;">Annual total</span>
+            <span id="annual-result" style="font-size:15px;font-weight:700;color:var(--cotton);">$36,000</span>
+          </div>
+          <p style="font-size:11px;color:rgba(245,240,232,0.25);margin-top:16px;line-height:1.5;">Estimate only. Actual rebates depend on enrolled supplier programs and qualifying purchases.</p>
+        </div>
+        <div class="fade-up stagger-2">
+          <p class="section-label">The Math</p>
+          <h2 class="section-title">Money left on the table is still money.</h2>
+          <p class="section-body">
+            Adjust the calculator to your volume and your supplier's rebate rate. The math
+            is straightforward — your tier determines how the rebate splits between you and
+            the group, and it updates automatically as your trailing volume grows.
+          </p>
+          <p class="section-body" style="margin-top:16px;">
+            A Silver-tier member doing $1.2M at a 5% rate walks away with $36,000 annually,
+            paid out quarterly. At Gold tier, that climbs to $39,000. The difference is your
+            trailing 12-month purchase volume — no manual tier changes, no negotiation.
+          </p>
+          <p class="section-body" style="margin-top:16px;">
+            Across multiple enrolled supplier programs, members regularly see six-figure
+            annual recoveries on purchases they were already making.
+          </p>
+          <a href="#apply" class="btn-primary" style="margin-top:32px;display:inline-flex;">
+            See What You Qualify For
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonials ─── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header fade-up">
+        <p class="section-label">Member Voices</p>
+        <h2 class="section-title">From the companies already inside.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up stagger-1">
+          <div class="testimonial-highlight"></div>
+          <span class="quote-mark">"</span>
+          <p class="testimonial-text">Before UTG, we were leaving real money on the table every month. Last year we recovered over $51,000 in rebates on materials we were already buying. The reporting takes our office manager about twenty minutes a month.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JR</div>
+            <div>
+              <div class="author-name">James R.</div>
+              <div class="author-company">Ridgemont Building Co. — Southeast Region</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up stagger-2">
+          <div class="testimonial-highlight"></div>
+          <span class="quote-mark">"</span>
+          <p class="testimonial-text">I appreciated that they were selective about membership. The application process was thorough — which told me everything I needed to know about the quality of who else they let in. That's exactly what makes the group valuable.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DH</div>
+            <div>
+              <div class="author-name">Dana H.</div>
+              <div class="author-company">Highpoint Roofing &amp; Supply — Mid-Atlantic</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up stagger-3">
+          <div class="testimonial-highlight"></div>
+          <span class="quote-mark">"</span>
+          <p class="testimonial-text">I was skeptical at first — buying groups always sound better than they are. Three months in, I had my first statement in hand. We're now enrolled in four supplier programs. The skepticism didn't last long.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MC</div>
+            <div>
+              <div class="author-name">Mike C.</div>
+              <div class="author-company">Terrace Contractors Group — Great Lakes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Who Qualifies ─── -->
+  <section id="criteria">
+    <div class="container">
+      <div class="criteria-header fade-up">
+        <p class="section-label">Who We Accept</p>
+        <h2 class="section-title">Not everyone qualifies.<br>That's the point.</h2>
+        <p class="section-body" style="font-size:17px;">
+          Membership is by application and approval. We're not trying to be the largest group —
+          we're trying to be the best one. Every member we accept either strengthens the group or
+          doesn't make the cut.
+        </p>
+      </div>
+      <div class="criteria-grid">
+        <div class="criteria-card fade-up stagger-1">
+          <div class="criteria-num">01</div>
+          <div>
+            <h3 class="criteria-title">Qualifying Purchase Volume</h3>
+            <p class="criteria-desc">Minimum $500,000 in annual purchases across enrolled supplier categories. We verify before extending membership, not after.</p>
+          </div>
+        </div>
+        <div class="criteria-card fade-up stagger-2">
+          <div class="criteria-num">02</div>
+          <div>
+            <h3 class="criteria-title">Established Business</h3>
+            <p class="criteria-desc">Three or more years operating with verifiable financials. We work with companies that have track records, not startups finding their footing.</p>
+          </div>
+        </div>
+        <div class="criteria-card fade-up stagger-3">
+          <div class="criteria-num">03</div>
+          <div>
+            <h3 class="criteria-title">Geographic Fit</h3>
+            <p class="criteria-desc">We limit overlapping membership in the same market area. If you're approved, you won't be competing with another member down the street.</p>
+          </div>
+        </div>
+        <div class="criteria-card fade-up stagger-4">
+          <div class="criteria-num">04</div>
+          <div>
+            <h3 class="criteria-title">Construction or Trade Focus</h3>
+            <p class="criteria-desc">General contractors, specialty subcontractors, building material dealers, and related trade businesses. We know the industry and stay in our lane.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Application CTA ─── -->
+  <section id="apply">
+    <div class="container">
+      <div class="apply-inner">
+        <div class="fade-up">
+          <p class="apply-eyebrow">Request an Invitation</p>
+          <h2 class="apply-title">Ready to stop leaving money behind?</h2>
+          <p class="apply-sub">
+            Tell us a bit about your company. We review every application personally and
+            respond within three business days — with an answer, not a sales call.
+          </p>
+          <ul class="apply-points">
+            <li class="apply-point">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              No obligation — approval doesn't lock you in
+            </li>
+            <li class="apply-point">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              We respond within 3 business days
+            </li>
+            <li class="apply-point">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Your information stays confidential
+            </li>
+            <li class="apply-point">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Annual membership fee is recovered in the first month for most companies
+            </li>
+          </ul>
+        </div>
+        <div class="apply-form-card fade-up stagger-2">
+          <h3 class="form-title">Request an Invitation</h3>
+          <p class="form-sub">We'll review and be in touch shortly.</p>
+          <form id="apply-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" placeholder="Acme Building Co." required />
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email</label>
+              <input type="email" id="email" placeholder="jane@acmebuild.com" required />
+            </div>
+            <div class="form-group">
+              <label for="volume">Estimated Annual Purchase Volume</label>
+              <select id="volume" required>
+                <option value="" disabled selected>Select a range</option>
+                <option value="500k-1m">$500K – $1M</option>
+                <option value="1m-2m">$1M – $2M</option>
+                <option value="2m-5m">$2M – $5M</option>
+                <option value="5m+">$5M+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="trade">Primary Trade</label>
+              <select id="trade" required>
+                <option value="" disabled selected>Select your trade</option>
+                <option>General Contractor</option>
+                <option>Framing / Structural</option>
+                <option>Roofing</option>
+                <option>Drywall / Interior</option>
+                <option>Electrical</option>
+                <option>Plumbing / Mechanical</option>
+                <option>Building Material Dealer</option>
+                <option>Other Trade</option>
+              </select>
+            </div>
+            <button type="submit" class="form-submit">
+              Request an Invitation →
+            </button>
+            <p class="form-note">By submitting, you agree to be contacted by our membership team. We don't share your information with members or third parties.</p>
+          </form>
+          <div class="form-success" id="form-success">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Application Received</h3>
+            <p>We'll review your information and follow up within 3 business days. Thank you for your interest in United Trades Group.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades Group" />
+          <p class="footer-tagline">A by-invitation buying group for construction companies serious about recovering the purchasing power their volume has earned them.</p>
+          <p class="footer-contact">
+            <a href="mailto:membership@u-trades.com">membership@u-trades.com</a><br>
+            <a href="https://www.u-trades.com">u-trades.com</a>
+          </p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigate</p>
+          <ul class="footer-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#benefits">Member Benefits</a></li>
+            <li><a href="#testimonials">Member Stories</a></li>
+            <li><a href="#criteria">Who Qualifies</a></li>
+            <li><a href="#apply">Request an Invitation</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">The Group</p>
+          <ul class="footer-links">
+            <li><a href="#problem">Why It Works</a></li>
+            <li><a href="#rebate-calc">The Math</a></li>
+            <li><a href="mailto:membership@u-trades.com">Contact Us</a></li>
+            <li><a href="https://app.u-trades.com/login">Member Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 United Trades Group. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── JavaScript ─── -->
+  <script>
+    // ── Nav scroll behavior ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Intersection Observer for fade-up ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── Counting stats ──
+    function formatMoney(n) {
+      if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'K';
+      return '$' + n;
+    }
+
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.target);
+      const isDecimal = el.dataset.decimal === 'true';
+      const isMoney = el.dataset.format === 'money';
+      const duration = 2000;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = target * ease;
+
+        if (isMoney) {
+          el.textContent = formatMoney(Math.round(current));
+          // Remove the $ span prefix since we handle it
+          const prev = el.previousElementSibling;
+          if (prev && prev.textContent === '$') prev.style.display = 'none';
+        } else if (isDecimal) {
+          el.textContent = current.toFixed(2);
+          const next = el.nextElementSibling;
+          if (next) next.style.display = 'none';
+        } else {
+          el.textContent = Math.round(current);
+        }
+
+        if (progress < 1) requestAnimationFrame(update);
+        else {
+          if (isMoney) el.textContent = '$2.8M';
+          else if (isDecimal) el.textContent = '3.25';
+          else el.textContent = target;
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.count-up').forEach(animateCount);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsSection = document.getElementById('stats');
+    if (statsSection) statsObserver.observe(statsSection);
+
+    // ── Interactive Rebate Calculator ──
+    let calcVolume = 1200000;
+    let calcRate = 5.0;
+
+    function getTier(vol) {
+      if (vol < 2000000) return { name: 'Bronze', share: 0.50, cls: 'tier-bronze' };
+      if (vol < 5000000) return { name: 'Silver', share: 0.60, cls: 'tier-silver' };
+      return { name: 'Gold', share: 0.65, cls: 'tier-gold' };
+    }
+
+    function fmtVolume(v) {
+      if (v >= 1000000) return '$' + (v / 1000000).toFixed(v % 1000000 === 0 ? 0 : 1) + 'M';
+      return '$' + (v / 1000).toFixed(0) + 'K';
+    }
+
+    function fmtMoney(v) {
+      return '$' + Math.round(v).toLocaleString('en-US');
+    }
+
+    function tierProgress(vol) {
+      if (vol < 2000000) return ((vol - 500000) / 1500000) * 33;
+      if (vol < 5000000) return 33 + ((vol - 2000000) / 3000000) * 33;
+      return Math.min(66 + ((vol - 5000000) / 5000000) * 34, 100);
+    }
+
+    function updateCalc() {
+      const slider = document.getElementById('vol-slider');
+      if (slider) calcVolume = parseInt(slider.value);
+
+      const tier = getTier(calcVolume);
+      const effRate = calcRate * tier.share;
+      const annual = calcVolume * effRate / 100;
+      const quarterly = annual / 4;
+
+      const volEl = document.getElementById('vol-display');
+      const tierEl = document.getElementById('tier-display');
+      const rateEl = document.getElementById('rate-display');
+      const barEl = document.getElementById('tier-bar');
+      const resultEl = document.getElementById('calc-result');
+      const annualEl = document.getElementById('annual-result');
+
+      if (volEl) volEl.textContent = fmtVolume(calcVolume);
+      if (tierEl) { tierEl.textContent = tier.name; tierEl.className = 'tier-display ' + tier.cls; }
+      if (rateEl) { rateEl.textContent = effRate.toFixed(2) + '%'; rateEl.className = 'tier-display ' + tier.cls; }
+      if (barEl) barEl.style.width = tierProgress(calcVolume) + '%';
+      if (resultEl) resultEl.textContent = fmtMoney(quarterly);
+      if (annualEl) annualEl.textContent = fmtMoney(annual);
+    }
+
+    function setRate(rate, btn) {
+      calcRate = rate;
+      document.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('rate-btn-active'));
+      btn.classList.add('rate-btn-active');
+      updateCalc();
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', updateCalc);
+
+    // ── Horizontal scroll drag ──
+    const track = document.getElementById('benefits-track-outer');
+    if (track) {
+      let isDown = false, startX, scrollLeft;
+      track.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        track.style.cursor = 'grabbing';
+      });
+      track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+      track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+      track.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    // ── Form submission ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('apply-form');
+      const success = document.getElementById('form-success');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+
+    // ── Mobile menu toggle ──
+    function toggleMobileMenu() {
+      const links = document.querySelector('.nav-links');
+      if (links.style.display === 'flex') {
+        links.style.display = 'none';
+        links.style.position = '';
+        links.style.flexDirection = '';
+      } else {
+        links.style.display = 'flex';
+        links.style.position = 'fixed';
+        links.style.top = '64px';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.flexDirection = 'column';
+        links.style.background = 'rgba(18,24,38,0.97)';
+        links.style.padding = '24px';
+        links.style.gap = '20px';
+        links.style.backdropFilter = 'blur(20px)';
+        links.style.zIndex = '99';
+      }
+    }
+
+    // ── Smooth anchor offset for fixed nav ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+          // close mobile menu
+          const links = document.querySelector('.nav-links');
+          if (window.innerWidth <= 900) {
+            links.style.display = 'none';
+            links.style.position = '';
+          }
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', updateCalc);
+  </script>
+</body>
+</html>
