@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>United Trades Group — Where Construction Leaders Pool Their Power</title>
-  <meta name="description" content="United Trades Group is a by-invitation buying group for construction companies. Pool your purchasing power with vetted peers to unlock supplier rebates you'd never qualify for alone." />
+  <title>United Trades — Collective Purchasing for Trade Contractors</title>
+  <meta name="description" content="United Trades brings trade contractors together as one purchasing organization. Better material pricing, structured rebate programs, and the buying power your volume actually deserves." />
   <link rel="icon" href="public/logos/ut-brandmark-indigo-oxblood.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -456,19 +456,9 @@
     }
     .steps-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: calc(33.33% - 0px);
-      right: calc(33.33% - 0px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--cotton-dim), var(--oxblood), var(--cotton-dim));
-      z-index: 0;
     }
     .step-card {
       background: var(--cotton);
@@ -525,8 +515,8 @@
       border-radius: 4px;
     }
 
-    /* ─── Benefits Horizontal Scroll ─── */
-    #benefits {
+    /* ─── Why Members Join (Horizontal Scroll) ─── */
+    #why-join {
       background: var(--indigo);
       padding: 100px 0;
     }
@@ -607,25 +597,25 @@
       line-height: 1.65;
     }
 
-    /* ─── Rebate Calculator ─── */
-    #rebate-calc {
+    /* ─── Before/After Comparison ─── */
+    #comparison {
       background: var(--cotton);
       padding: 120px 0;
     }
-    .rebate-grid {
+    .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
     }
-    .rebate-viz {
+    .comparison-viz {
       background: var(--indigo);
       border-radius: var(--radius-lg);
       padding: 40px;
       overflow: hidden;
       position: relative;
     }
-    .rebate-viz::after {
+    .comparison-viz::after {
       content: '';
       position: absolute;
       bottom: -80px;
@@ -636,242 +626,75 @@
       background: radial-gradient(circle, rgba(123,45,59,0.2), transparent 70%);
       pointer-events: none;
     }
-    .rebate-viz-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted-dark);
-      margin-bottom: 16px;
-    }
-    .rebate-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(245,240,232,0.07);
-    }
-    .rebate-row:last-child { border-bottom: none; }
-    .rebate-row-label { font-size: 14px; color: rgba(245,240,232,0.6); }
-    .rebate-row-val {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--cotton);
-    }
-    .rebate-row-val.highlight {
-      color: hsl(349, 80%, 78%);
-      font-size: 28px;
-      transition: all 0.3s ease;
-    }
-    /* Slider */
-    .calc-field { margin-bottom: 24px; position: relative; z-index: 1; }
-    .calc-field-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 10px;
-    }
-    .calc-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted-dark);
-    }
-    .calc-val {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--cotton);
-    }
-    .calc-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(245,240,232,0.12);
-      outline: none;
-      cursor: pointer;
-    }
-    .calc-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--oxblood-light);
-      cursor: pointer;
-      border: 3px solid hsl(349, 80%, 78%);
-      box-shadow: 0 0 0 0 rgba(123,45,59,0.4);
-      transition: box-shadow 0.2s ease;
-    }
-    .calc-slider::-webkit-slider-thumb:hover {
-      box-shadow: 0 0 0 6px rgba(123,45,59,0.25);
-    }
-    .calc-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--oxblood-light);
-      cursor: pointer;
-      border: 3px solid hsl(349, 80%, 78%);
-    }
-    .calc-range-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 6px;
-      font-size: 11px;
-      color: rgba(245,240,232,0.3);
-    }
-    /* Rate buttons */
-    .rate-options {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .rate-btn {
-      flex: 1;
-      padding: 8px 4px;
-      background: rgba(245,240,232,0.06);
-      border: 1px solid rgba(245,240,232,0.12);
-      border-radius: var(--radius);
-      color: rgba(245,240,232,0.5);
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .rate-btn:hover { background: rgba(245,240,232,0.1); color: var(--cotton); }
-    .rate-btn-active {
-      background: rgba(123,45,59,0.3) !important;
-      border-color: rgba(123,45,59,0.7) !important;
-      color: hsl(349, 80%, 80%) !important;
-    }
-    /* Tier progress */
-    .calc-tier-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-    .tier-display {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--cotton);
-      transition: color 0.3s ease;
-    }
-    .tier-display.tier-bronze { color: #cd7f32; }
-    .tier-display.tier-silver { color: #b8c4d0; }
-    .tier-display.tier-gold { color: #d4a842; }
-    .tier-progress-track {
-      height: 6px;
-      background: rgba(245,240,232,0.1);
-      border-radius: 3px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
-    }
-    .tier-progress-bar {
-      height: 100%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, #cd7f32, #b8c4d0, #d4a842);
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .tier-progress-labels {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      font-size: 11px;
-      color: rgba(245,240,232,0.35);
-    }
-    .tier-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 100px;
-      border: 1px solid;
-    }
-    .tier-badge.bronze { color: #cd7f32; border-color: rgba(205,127,50,0.4); background: rgba(205,127,50,0.1); }
-    .tier-badge.silver { color: #a8b2c0; border-color: rgba(168,178,192,0.4); background: rgba(168,178,192,0.1); }
-    .tier-badge.gold { color: #d4a842; border-color: rgba(212,168,66,0.4); background: rgba(212,168,66,0.1); }
-
-    /* ─── Testimonials ─── */
-    #testimonials {
-      background: hsl(217, 33%, 11%);
-      padding: 120px 0;
-    }
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .testimonials-header .section-label { color: hsl(349, 80%, 75%); }
-    .testimonials-header .section-title { color: var(--cotton); }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .testimonial-card {
-      background: hsl(217, 33%, 15%);
-      border: 1px solid rgba(245,240,232,0.07);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      position: relative;
-    }
-    .quote-mark {
-      font-size: 72px;
-      line-height: 0.5;
-      color: var(--oxblood);
-      font-family: Georgia, serif;
-      margin-bottom: 20px;
-      display: block;
-    }
-    .testimonial-text {
-      font-size: 16px;
-      color: rgba(245,240,232,0.8);
-      line-height: 1.75;
-      margin-bottom: 28px;
-      font-weight: 400;
-    }
-    .testimonial-author {
+    .comparison-panel { position: relative; z-index: 1; }
+    .comparison-panel-header {
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(245,240,232,0.1);
     }
-    .author-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--oxblood-dim);
+    .comparison-panel-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .comparison-panel-header.alone h3 { color: var(--text-muted-dark); }
+    .comparison-panel-header.together h3 { color: hsl(349, 80%, 78%); }
+    .comparison-panel-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: hsl(349, 80%, 85%);
       flex-shrink: 0;
     }
-    .author-name {
+    .comparison-panel-header.alone .comparison-panel-icon { background: rgba(245,240,232,0.08); }
+    .comparison-panel-header.together .comparison-panel-icon { background: rgba(123, 45, 59, 0.3); }
+    .comparison-panel-icon svg { width: 18px; height: 18px; }
+    .comparison-panel-header.alone .comparison-panel-icon svg { color: var(--text-muted-dark); }
+    .comparison-panel-header.together .comparison-panel-icon svg { color: hsl(349, 80%, 75%); }
+    .comparison-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(245,240,232,0.05);
+    }
+    .comparison-row:last-child { border-bottom: none; }
+    .comparison-label {
+      font-size: 13px;
+      color: rgba(245,240,232,0.5);
+      font-weight: 500;
+    }
+    .comparison-value {
       font-size: 14px;
       font-weight: 600;
-      color: var(--cotton);
+      text-align: right;
+      max-width: 55%;
     }
-    .author-company {
+    .comparison-value.dim { color: rgba(245,240,232,0.35); }
+    .comparison-value.highlight { color: hsl(349, 80%, 78%); }
+    .comparison-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 0;
+    }
+    .vs-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(123, 45, 59, 0.3);
+      border: 1px solid rgba(123, 45, 59, 0.5);
+      color: hsl(349, 80%, 78%);
       font-size: 13px;
-      color: var(--text-muted-dark);
-    }
-    .testimonial-highlight {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--oxblood), transparent);
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     /* ─── Criteria ─── */
@@ -1081,6 +904,24 @@
       margin-top: 12px;
       line-height: 1.5;
     }
+    .form-error {
+      color: #f87171;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 8px;
+      display: none;
+    }
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .form-row-2col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+    }
 
     /* ─── Footer ─── */
     footer {
@@ -1171,11 +1012,9 @@
     @media (max-width: 900px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .problem-grid,
-      .rebate-grid,
+      .comparison-grid,
       .apply-inner { grid-template-columns: 1fr; gap: 48px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
-      .steps-grid::before { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
       .footer-grid > div:first-child { grid-column: 1 / -1; }
       .criteria-grid { grid-template-columns: 1fr; }
@@ -1198,13 +1037,12 @@
   <nav id="main-nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="#hero" class="nav-logo" aria-label="United Trades Group">
-          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades Group" />
+        <a href="#hero" class="nav-logo" aria-label="United Trades">
+          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades" />
         </a>
         <ul class="nav-links">
           <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#testimonials">Members</a></li>
+          <li><a href="#why-join">Why Join</a></li>
           <li><a href="#criteria">Who Qualifies</a></li>
           <li><a href="https://app.u-trades.com/login">Member Login</a></li>
           <li><a href="#apply" class="btn-nav">Request an Invitation</a></li>
@@ -1230,13 +1068,11 @@
           By Invitation Only
         </div>
         <h1 class="hero-headline fade-up stagger-1">
-          Your purchases are<br><em>already earning rebates.</em><br>
-          You just aren't collecting them.
+          Buy as one organization.<br><em>Pay less for everything.</em>
         </h1>
         <p class="hero-sub fade-up stagger-2">
-          United Trades Group pools the purchasing power of vetted construction
-          companies to unlock supplier rebate programs that individual companies
-          can't access alone. Same suppliers. Same purchases. Significantly more back.
+          Your volume joins dozens of other top contractors under one organization.
+          Better material pricing on every order — plus quarterly rebate earnings on top.
         </p>
         <div class="hero-actions fade-up stagger-3">
           <a href="#apply" class="btn-primary">
@@ -1263,21 +1099,21 @@
         <div style="overflow:hidden;flex:1;position:relative;">
           <div style="display:flex;gap:0;">
             <div class="supplier-ticker">
-              <span>No supplier switching required</span>
-              <span>Quarterly earnings distributions</span>
+              <span>Preferred material pricing from day one</span>
+              <span>Quarterly rebate distributions</span>
               <span>Invitation-only membership</span>
               <span>Complete purchase confidentiality</span>
-              <span>Tier-based rebates that grow with your volume</span>
+              <span>Savings that grow with the group's volume</span>
               <span>Pooled purchasing power</span>
-              <span>Detailed earnings statements every quarter</span>
+              <span>Transparent quarterly earnings statements</span>
               <span>Collective negotiating strength</span>
-              <span>No supplier switching required</span>
-              <span>Quarterly earnings distributions</span>
+              <span>Preferred material pricing from day one</span>
+              <span>Quarterly rebate distributions</span>
               <span>Invitation-only membership</span>
               <span>Complete purchase confidentiality</span>
-              <span>Tier-based rebates that grow with your volume</span>
+              <span>Savings that grow with the group's volume</span>
               <span>Pooled purchasing power</span>
-              <span>Detailed earnings statements every quarter</span>
+              <span>Transparent quarterly earnings statements</span>
               <span>Collective negotiating strength</span>
             </div>
           </div>
@@ -1292,27 +1128,27 @@
       <div class="stats-grid">
         <div class="stat-card fade-up">
           <div class="stat-num">
-            <span>$</span><span class="count-up" data-target="2800000" data-prefix="$" data-format="money">0</span>
+            <span>$</span><span class="count-up" data-target="700" data-suffix="">0</span><span>M+</span>
           </div>
-          <div class="stat-label">Returned to Members Last Year</div>
+          <div class="stat-label">In Volume Under Our Leadership</div>
         </div>
         <div class="stat-card fade-up stagger-1">
-          <div class="stat-num">
-            <span class="count-up" data-target="3.25" data-suffix="%" data-decimal="true">0</span><span>%</span>
+          <div class="stat-num" style="font-size:clamp(30px,4.5vw,48px);">
+            Q3 <span>'26</span>
           </div>
-          <div class="stat-label">Maximum Effective Rebate Rate</div>
+          <div class="stat-label">Targeted Launch — Founding Members Now</div>
         </div>
         <div class="stat-card fade-up stagger-2">
           <div class="stat-num">
-            <span class="count-up" data-target="14" data-suffix="">0</span><span>+</span>
+            <span class="count-up" data-target="1" data-suffix="">0</span>
           </div>
-          <div class="stat-label">Active Supplier Programs</div>
+          <div class="stat-label">Purchasing Entity — Dozens of Contractors</div>
         </div>
         <div class="stat-card fade-up stagger-3">
           <div class="stat-num">
-            <span class="count-up" data-target="94" data-suffix="">0</span><span>%</span>
+            <span class="count-up" data-target="100" data-suffix="">0</span><span>%</span>
           </div>
-          <div class="stat-label">Annual Member Retention</div>
+          <div class="stat-label">Confidential — Your Data Is Never Shared</div>
         </div>
       </div>
     </div>
@@ -1324,16 +1160,17 @@
       <div class="problem-grid">
         <div class="fade-up">
           <p class="section-label">The Reality</p>
-          <h2 class="section-title">Your supplier knows exactly what you're worth to them.</h2>
+          <h2 class="section-title">You're negotiating alone against suppliers who reward scale.</h2>
           <p class="section-body">
-            Suppliers offer tiered rebate programs — but access depends entirely on volume.
-            A mid-sized construction company buying $1.5M in lumber annually gets a different
-            deal than one buying $15M. That's not a secret. It's policy.
+            Every supplier prices on volume. The bigger the buyer, the better the deal.
+            A contractor buying a few million a year gets a fundamentally different price
+            than an organization buying tens of millions. That's not a secret —
+            it's how the business works.
           </p>
           <p class="section-body" style="margin-top:16px;">
-            Most of our members qualified perfectly well on their own — they just lacked the
-            leverage to prove it to suppliers who only negotiate with buyers at scale.
-            That's what we fix.
+            The contractors we're bringing together are already good operators with solid volume. They
+            just lack the collective weight to command the pricing their combined purchases actually
+            deserve. That's what we fix.
           </p>
         </div>
         <div class="callout-box fade-up stagger-2">
@@ -1343,8 +1180,8 @@
                 <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
               </div>
               <div class="callout-line-text">
-                <strong>Rebates you didn't know existed</strong>
-                <p>Suppliers run programs they never advertise publicly. You need to be in the room to know about them.</p>
+                <strong>Pricing you can't access alone</strong>
+                <p>Suppliers save their best pricing for their biggest buyers. When you buy through United Trades, you are one of their biggest buyers.</p>
               </div>
             </div>
             <div class="callout-line">
@@ -1352,8 +1189,8 @@
                 <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
               <div class="callout-line-text">
-                <strong>Volume thresholds you can't hit alone</strong>
-                <p>Gold-tier rebate rates often require $5M+ in annual purchases from a single account. Together, we're always there.</p>
+                <strong>Rebate programs on top of the savings</strong>
+                <p>Beyond the better pricing, suppliers pay structured rebates on the group's total volume. We distribute those earnings to you every quarter.</p>
               </div>
             </div>
             <div class="callout-line">
@@ -1361,8 +1198,8 @@
                 <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
               <div class="callout-line-text">
-                <strong>Time you don't have to negotiate</strong>
-                <p>Supplier rebate negotiations take months. Our team handles all of it. You just report your purchases.</p>
+                <strong>Negotiations handled for you</strong>
+                <p>Supplier pricing negotiations take months of back-and-forth. Our team handles all of it. You focus on running your business.</p>
               </div>
             </div>
           </div>
@@ -1377,39 +1214,45 @@
       <div class="section-header fade-up">
         <p class="section-label">The Process</p>
         <h2 class="section-title">Simple by design. Powerful by scale.</h2>
-        <p class="section-body">Three steps between you and the rebates your purchasing volume already deserves.</p>
+        <p class="section-body">Four steps between you and the pricing your volume actually deserves.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card fade-up stagger-1">
           <div class="step-num">1</div>
           <h3 class="step-title">Apply &amp; Get Vetted</h3>
-          <p class="step-desc">Submit your application. We evaluate annual purchase volume, trade category, years in business, and geographic fit. We're selective because the group's value depends on who's in it.</p>
+          <p class="step-desc">Submit your application. We evaluate your company, your volume, and your market fit. We're selective because the group's value depends on who's in it.</p>
           <span class="step-badge">Selective Admission</span>
         </div>
         <div class="step-card fade-up stagger-2">
           <div class="step-num">2</div>
-          <h3 class="step-title">Buy as You Always Have</h3>
-          <p class="step-desc">No supplier switching. No new accounts to open. Your existing supplier relationships stay exactly as they are. Each month, submit a simple purchase report through our member portal.</p>
-          <span class="step-badge">Zero Disruption</span>
+          <h3 class="step-title">We Negotiate on Your Behalf</h3>
+          <p class="step-desc">We take the combined volume of every member to suppliers and negotiate preferred pricing, rebate programs, and priority service you couldn't get on your own.</p>
+          <span class="step-badge">Group Leverage</span>
         </div>
         <div class="step-card fade-up stagger-3">
           <div class="step-num">3</div>
-          <h3 class="step-title">Rebates Flow Back to You</h3>
-          <p class="step-desc">We pool member purchase volume, present it to suppliers as collective buying power, and distribute rebates back to members quarterly — transparently, with a full earnings statement every cycle.</p>
-          <span class="step-badge">Quarterly Distribution</span>
+          <h3 class="step-title">You Buy Through the Group</h3>
+          <p class="step-desc">Buy from the suppliers we've already negotiated with. Your pricing is locked in — just buy the way you always do and submit a simple monthly report through our portal.</p>
+          <span class="step-badge">Collective Action</span>
+        </div>
+        <div class="step-card fade-up stagger-4">
+          <div class="step-num">4</div>
+          <h3 class="step-title">Better Pricing + Quarterly Rebates</h3>
+          <p class="step-desc">Preferred material pricing on every order from day one, plus quarterly rebate distributions on top. We handle the math. You get a check and a clean statement.</p>
+          <span class="step-badge">Savings + Rebates</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Benefits Horizontal Scroll ─── -->
-  <section id="benefits">
+  <!-- ─── Why Members Join (Horizontal Scroll) ─── -->
+  <section id="why-join">
     <div class="container">
       <div class="benefits-header fade-up">
         <div class="benefits-header-row">
           <div>
-            <p class="section-label">Member Benefits</p>
-            <h2 class="section-title" style="margin-bottom:0;">Everything the group gives you.</h2>
+            <p class="section-label">Why Members Join</p>
+            <h2 class="section-title" style="margin-bottom:0;">What the group gives you.</h2>
           </div>
           <div class="scroll-hint" aria-hidden="true">
             <span>Scroll to explore</span>
@@ -1424,50 +1267,43 @@
           <div class="benefit-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <h3 class="benefit-title">Rebates on Purchases You're Already Making</h3>
-          <p class="benefit-desc">No behavior change required. You're already spending the money. We just make sure you're getting something back for it.</p>
+          <h3 class="benefit-title">Better Pricing on What You're Already Buying</h3>
+          <p class="benefit-desc">You're already spending the money. We get you a better price on it — and quarterly rebate earnings on top.</p>
         </div>
         <div class="benefit-card fade-up stagger-1">
           <div class="benefit-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 class="benefit-title">Supplier Relationships Negotiated at Scale</h3>
-          <p class="benefit-desc">We present collective member volume to suppliers. What you couldn't negotiate on your own becomes a straightforward conversation when we speak for the group.</p>
+          <h3 class="benefit-title">The Group's Weight Behind Every Purchase</h3>
+          <p class="benefit-desc">When you buy through United Trades, the supplier sees the combined volume of the entire membership. Your purchases carry a lot more weight when they're part of something that large.</p>
         </div>
         <div class="benefit-card fade-up stagger-2">
           <div class="benefit-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <h3 class="benefit-title">Seamless Monthly Reporting</h3>
-          <p class="benefit-desc">Submit once a month through our member portal. Our platform handles reconciliation, calculation, and distribution. You get a statement. That's it.</p>
+          <h3 class="benefit-title">Run by People Who've Done This</h3>
+          <p class="benefit-desc">Our leadership team ran a buying group for residential builders with over $700M in combined volume. We know the model, we know the industry, and we built the platform to run it right.</p>
         </div>
         <div class="benefit-card fade-up stagger-3">
+          <div class="benefit-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="benefit-title">Simple Monthly Reporting</h3>
+          <p class="benefit-desc">Submit once a month through our member portal. We handle the reconciliation and send your statement. That's it.</p>
+        </div>
+        <div class="benefit-card fade-up stagger-4">
           <div class="benefit-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <h3 class="benefit-title">Complete Confidentiality</h3>
           <p class="benefit-desc">Your pricing, volume, and supplier relationships stay private. Members never see each other's numbers. We aggregate, not expose.</p>
         </div>
-        <div class="benefit-card fade-up stagger-4">
+        <div class="benefit-card fade-up stagger-5">
           <div class="benefit-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
-          <h3 class="benefit-title">Tier-Based Earnings That Grow With You</h3>
-          <p class="benefit-desc">Higher annual purchase volume unlocks better rebate rates. As your business grows, your effective rebate rate grows with it — automatically.</p>
-        </div>
-        <div class="benefit-card fade-up stagger-5">
-          <div class="benefit-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h3 class="benefit-title">Vetted Member Network</h3>
-          <p class="benefit-desc">Everyone at the table went through the same vetting you did. The group is only as strong as its members, and we take that seriously.</p>
-        </div>
-        <div class="benefit-card fade-up stagger-6">
-          <div class="benefit-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3 class="benefit-title">Fast, Transparent Distribution</h3>
-          <p class="benefit-desc">Rebates distributed quarterly once supplier payments clear. Detailed earnings statements every cycle showing exactly what you earned and how it was calculated.</p>
+          <h3 class="benefit-title">The Group Gets Stronger as It Grows</h3>
+          <p class="benefit-desc">More members buying through the group means stronger pricing and better rebate terms for everyone. You grow the group. The group grows your savings.</p>
         </div>
         <!-- spacer -->
         <div style="width:max(24px, calc((100vw - 1160px)/2 + 24px));flex-shrink:0;"></div>
@@ -1475,141 +1311,89 @@
     </div>
   </section>
 
-  <!-- ─── Rebate Calculator Visual ─── -->
-  <section id="rebate-calc">
+  <!-- ─── Before/After Comparison ─── -->
+  <section id="comparison">
     <div class="container">
-      <div class="rebate-grid">
-        <div class="rebate-viz fade-up" id="rebate-viz">
-          <p class="rebate-viz-label">Estimate Your Annual Rebate</p>
-
-          <!-- Volume Slider -->
-          <div class="calc-field">
-            <div class="calc-field-row">
-              <span class="calc-label">Annual Purchase Volume</span>
-              <span class="calc-val" id="vol-display">$3.5M</span>
+      <div class="comparison-grid">
+        <div class="comparison-viz fade-up">
+          <!-- Buying Alone -->
+          <div class="comparison-panel">
+            <div class="comparison-panel-header alone">
+              <span class="comparison-panel-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <h3>Buying Alone</h3>
             </div>
-            <input type="range" class="calc-slider" id="vol-slider"
-              min="500000" max="10000000" step="50000" value="3500000"
-              oninput="updateCalc()" />
-            <div class="calc-range-labels"><span>$500K</span><span>$10M+</span></div>
-          </div>
-
-          <!-- Rate Buttons -->
-          <div class="calc-field">
-            <span class="calc-label">Supplier Rebate Rate</span>
-            <div class="rate-options">
-              <button class="rate-btn" onclick="setRate(2.5,this)">2.5%</button>
-              <button class="rate-btn" onclick="setRate(3.0,this)">3.0%</button>
-              <button class="rate-btn" onclick="setRate(4.0,this)">4.0%</button>
-              <button class="rate-btn rate-btn-active" onclick="setRate(5.0,this)">5.0%</button>
-            </div>
-          </div>
-
-          <!-- Tier Display -->
-          <div class="calc-tier-row">
             <div>
-              <div class="rebate-viz-label" style="margin-bottom:4px;">Membership Tier</div>
-              <div class="tier-display tier-silver" id="tier-display">Silver</div>
-            </div>
-            <div style="text-align:right;">
-              <div class="rebate-viz-label" style="margin-bottom:4px;">Your Effective Rate</div>
-              <div class="tier-display tier-silver" id="rate-display">3.0%</div>
+              <div class="comparison-row">
+                <span class="comparison-label">Negotiating power</span>
+                <span class="comparison-value dim">Your volume only</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Material pricing</span>
+                <span class="comparison-value dim">Standard / list price</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Rebate access</span>
+                <span class="comparison-value dim">Limited or none</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Supplier leverage</span>
+                <span class="comparison-value dim">One company, one voice</span>
+              </div>
             </div>
           </div>
 
-          <!-- Tier Progress Bar -->
-          <div class="tier-progress-track">
-            <div class="tier-progress-bar" id="tier-bar" style="width:18%"></div>
-          </div>
-          <div class="tier-progress-labels">
-            <span class="tier-badge bronze">Bronze</span>
-            <span>$2M</span>
-            <span class="tier-badge silver">Silver</span>
-            <span>$5M</span>
-            <span class="tier-badge gold">Gold</span>
+          <!-- Divider -->
+          <div class="comparison-divider">
+            <span class="vs-badge">vs</span>
           </div>
 
-          <!-- Result -->
-          <div style="height:1px;background:rgba(245,240,232,0.1);margin:4px 0 16px;"></div>
-          <div class="rebate-row" style="padding:0;">
-            <span class="rebate-row-label" style="font-size:15px;color:rgba(245,240,232,0.75);">Estimated quarterly payout</span>
-            <span class="rebate-row-val highlight" id="calc-result">$9,000</span>
+          <!-- Buying With United Trades -->
+          <div class="comparison-panel">
+            <div class="comparison-panel-header together">
+              <span class="comparison-panel-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <h3>Buying With United Trades</h3>
+            </div>
+            <div>
+              <div class="comparison-row">
+                <span class="comparison-label">Negotiating power</span>
+                <span class="comparison-value highlight">Combined volume of all members</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Material pricing</span>
+                <span class="comparison-value highlight">Preferred / negotiated rates</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Rebate access</span>
+                <span class="comparison-value highlight">Structured programs + quarterly distributions</span>
+              </div>
+              <div class="comparison-row">
+                <span class="comparison-label">Supplier leverage</span>
+                <span class="comparison-value highlight">Dozens of contractors as one entity</span>
+              </div>
+            </div>
           </div>
-          <div class="rebate-row" style="padding:10px 0 0;">
-            <span class="rebate-row-label" style="font-size:13px;">Annual total</span>
-            <span id="annual-result" style="font-size:15px;font-weight:700;color:var(--cotton);">$36,000</span>
-          </div>
-          <p style="font-size:11px;color:rgba(245,240,232,0.25);margin-top:16px;line-height:1.5;">Estimate only. Actual rebates depend on enrolled supplier programs and qualifying purchases.</p>
         </div>
+
         <div class="fade-up stagger-2">
-          <p class="section-label">The Math</p>
-          <h2 class="section-title">Money left on the table is still money.</h2>
+          <p class="section-label">The Difference</p>
+          <h2 class="section-title">Same materials. Same suppliers. Completely different pricing.</h2>
           <p class="section-body">
-            Adjust the calculator to your volume and your supplier's rebate rate. The math
-            is straightforward — your tier determines how the rebate splits between you and
-            the group, and it updates automatically as your trailing volume grows.
+            You know how supplier pricing works — the bigger the buyer, the better the price.
+            United Trades puts your volume together with the rest of the group's and takes you
+            to a tier you'd never reach alone.
           </p>
           <p class="section-body" style="margin-top:16px;">
-            A Silver-tier member doing $1.2M at a 5% rate walks away with $36,000 annually,
-            paid out quarterly. At Gold tier, that climbs to $39,000. The difference is your
-            trailing 12-month purchase volume — no manual tier changes, no negotiation.
-          </p>
-          <p class="section-body" style="margin-top:16px;">
-            Across multiple enrolled supplier programs, members regularly see six-figure
-            annual recoveries on purchases they were already making.
+            One annual membership fee. No hidden costs. No complicated contracts. The savings
+            and quarterly rebate earnings more than speak for themselves.
           </p>
           <a href="#apply" class="btn-primary" style="margin-top:32px;display:inline-flex;">
             See What You Qualify For
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Testimonials ─── -->
-  <section id="testimonials">
-    <div class="container">
-      <div class="testimonials-header fade-up">
-        <p class="section-label">Member Voices</p>
-        <h2 class="section-title">From the companies already inside.</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-up stagger-1">
-          <div class="testimonial-highlight"></div>
-          <span class="quote-mark">"</span>
-          <p class="testimonial-text">Before UTG, we were leaving real money on the table every month. Last year we recovered over $51,000 in rebates on materials we were already buying. The reporting takes our office manager about twenty minutes a month.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">JR</div>
-            <div>
-              <div class="author-name">James R.</div>
-              <div class="author-company">Ridgemont Building Co. — Southeast Region</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up stagger-2">
-          <div class="testimonial-highlight"></div>
-          <span class="quote-mark">"</span>
-          <p class="testimonial-text">I appreciated that they were selective about membership. The application process was thorough — which told me everything I needed to know about the quality of who else they let in. That's exactly what makes the group valuable.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">DH</div>
-            <div>
-              <div class="author-name">Dana H.</div>
-              <div class="author-company">Highpoint Roofing &amp; Supply — Mid-Atlantic</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up stagger-3">
-          <div class="testimonial-highlight"></div>
-          <span class="quote-mark">"</span>
-          <p class="testimonial-text">I was skeptical at first — buying groups always sound better than they are. Three months in, I had my first statement in hand. We're now enrolled in four supplier programs. The skepticism didn't last long.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">MC</div>
-            <div>
-              <div class="author-name">Mike C.</div>
-              <div class="author-company">Terrace Contractors Group — Great Lakes</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1622,8 +1406,8 @@
         <p class="section-label">Who We Accept</p>
         <h2 class="section-title">Not everyone qualifies.<br>That's the point.</h2>
         <p class="section-body" style="font-size:17px;">
-          Membership is by application and approval. We're not trying to be the largest group —
-          we're trying to be the best one. Every member we accept either strengthens the group or
+          Membership is by application only. We're not building the biggest group —
+          we're building the best one. Every member either strengthens the group or
           doesn't make the cut.
         </p>
       </div>
@@ -1632,21 +1416,21 @@
           <div class="criteria-num">01</div>
           <div>
             <h3 class="criteria-title">Qualifying Purchase Volume</h3>
-            <p class="criteria-desc">Minimum $500,000 in annual purchases across enrolled supplier categories. We verify before extending membership, not after.</p>
+            <p class="criteria-desc">Established businesses with meaningful annual purchase volume in the supplier categories we cover. We verify the numbers before extending membership.</p>
           </div>
         </div>
         <div class="criteria-card fade-up stagger-2">
           <div class="criteria-num">02</div>
           <div>
             <h3 class="criteria-title">Established Business</h3>
-            <p class="criteria-desc">Three or more years operating with verifiable financials. We work with companies that have track records, not startups finding their footing.</p>
+            <p class="criteria-desc">We work with companies that have a track record and the financials to back it up. No startups, no speculators.</p>
           </div>
         </div>
         <div class="criteria-card fade-up stagger-3">
           <div class="criteria-num">03</div>
           <div>
-            <h3 class="criteria-title">Geographic Fit</h3>
-            <p class="criteria-desc">We limit overlapping membership in the same market area. If you're approved, you won't be competing with another member down the street.</p>
+            <h3 class="criteria-title">Market Leadership</h3>
+            <p class="criteria-desc">We build the group market by market, starting with the strongest operators in each area. Suppliers take us seriously because of who's at the table.</p>
           </div>
         </div>
         <div class="criteria-card fade-up stagger-4">
@@ -1666,10 +1450,12 @@
       <div class="apply-inner">
         <div class="fade-up">
           <p class="apply-eyebrow">Request an Invitation</p>
-          <h2 class="apply-title">Ready to stop leaving money behind?</h2>
+          <h2 class="apply-title">Ready to buy as part of something bigger?</h2>
           <p class="apply-sub">
-            Tell us a bit about your company. We review every application personally and
-            respond within three business days — with an answer, not a sales call.
+            We're assembling the founding membership group now, with a targeted launch in Q3 2026.
+            Founding members get input on supplier selection, program structure, and first access
+            to negotiated pricing. Tell us about your company — we respond within three business
+            days with an answer, not a sales call.
           </p>
           <ul class="apply-points">
             <li class="apply-point">
@@ -1686,7 +1472,7 @@
             </li>
             <li class="apply-point">
               <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              Annual membership fee is recovered in the first month for most companies
+              One annual membership fee. Everything else is upside
             </li>
           </ul>
         </div>
@@ -1705,6 +1491,69 @@
             <div class="form-group">
               <label for="email">Business Email</label>
               <input type="email" id="email" placeholder="jane@acmebuild.com" required />
+            </div>
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Dallas" required />
+              </div>
+              <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" required>
+                  <option value="" disabled selected>State</option>
+                  <option value="AL">AL</option>
+                  <option value="AK">AK</option>
+                  <option value="AZ">AZ</option>
+                  <option value="AR">AR</option>
+                  <option value="CA">CA</option>
+                  <option value="CO">CO</option>
+                  <option value="CT">CT</option>
+                  <option value="DE">DE</option>
+                  <option value="DC">DC</option>
+                  <option value="FL">FL</option>
+                  <option value="GA">GA</option>
+                  <option value="HI">HI</option>
+                  <option value="ID">ID</option>
+                  <option value="IL">IL</option>
+                  <option value="IN">IN</option>
+                  <option value="IA">IA</option>
+                  <option value="KS">KS</option>
+                  <option value="KY">KY</option>
+                  <option value="LA">LA</option>
+                  <option value="ME">ME</option>
+                  <option value="MD">MD</option>
+                  <option value="MA">MA</option>
+                  <option value="MI">MI</option>
+                  <option value="MN">MN</option>
+                  <option value="MS">MS</option>
+                  <option value="MO">MO</option>
+                  <option value="MT">MT</option>
+                  <option value="NE">NE</option>
+                  <option value="NV">NV</option>
+                  <option value="NH">NH</option>
+                  <option value="NJ">NJ</option>
+                  <option value="NM">NM</option>
+                  <option value="NY">NY</option>
+                  <option value="NC">NC</option>
+                  <option value="ND">ND</option>
+                  <option value="OH">OH</option>
+                  <option value="OK">OK</option>
+                  <option value="OR">OR</option>
+                  <option value="PA">PA</option>
+                  <option value="RI">RI</option>
+                  <option value="SC">SC</option>
+                  <option value="SD">SD</option>
+                  <option value="TN">TN</option>
+                  <option value="TX">TX</option>
+                  <option value="UT">UT</option>
+                  <option value="VT">VT</option>
+                  <option value="VA">VA</option>
+                  <option value="WA">WA</option>
+                  <option value="WV">WV</option>
+                  <option value="WI">WI</option>
+                  <option value="WY">WY</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="volume">Estimated Annual Purchase Volume</label>
@@ -1730,15 +1579,19 @@
                 <option>Other Trade</option>
               </select>
             </div>
+            <div style="position:absolute;left:-9999px;" aria-hidden="true">
+              <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
             <button type="submit" class="form-submit">
               Request an Invitation →
             </button>
             <p class="form-note">By submitting, you agree to be contacted by our membership team. We don't share your information with members or third parties.</p>
+            <p class="form-error" id="form-error"></p>
           </form>
           <div class="form-success" id="form-success">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <h3>Application Received</h3>
-            <p>We'll review your information and follow up within 3 business days. Thank you for your interest in United Trades Group.</p>
+            <p>We'll review your information and follow up within 3 business days. Thank you for your interest in United Trades.</p>
           </div>
         </div>
       </div>
@@ -1750,8 +1603,9 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades Group" />
-          <p class="footer-tagline">A by-invitation buying group for construction companies serious about recovering the purchasing power their volume has earned them.</p>
+          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades" />
+          <p class="footer-tagline" style="font-style:italic;color:rgba(245,240,232,0.5);font-size:13px;margin-bottom:12px;">Strength in Unity</p>
+          <p class="footer-tagline">A by-invitation buying group for trade contractors who want the pricing their volume actually deserves.</p>
           <p class="footer-contact">
             <a href="mailto:membership@u-trades.com">membership@u-trades.com</a><br>
             <a href="https://www.u-trades.com">u-trades.com</a>
@@ -1761,8 +1615,7 @@
           <p class="footer-col-title">Navigate</p>
           <ul class="footer-links">
             <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#benefits">Member Benefits</a></li>
-            <li><a href="#testimonials">Member Stories</a></li>
+            <li><a href="#why-join">Why Members Join</a></li>
             <li><a href="#criteria">Who Qualifies</a></li>
             <li><a href="#apply">Request an Invitation</a></li>
           </ul>
@@ -1771,7 +1624,7 @@
           <p class="footer-col-title">The Group</p>
           <ul class="footer-links">
             <li><a href="#problem">Why It Works</a></li>
-            <li><a href="#rebate-calc">The Math</a></li>
+            <li><a href="#comparison">The Difference</a></li>
             <li><a href="mailto:membership@u-trades.com">Contact Us</a></li>
             <li><a href="https://app.u-trades.com/login">Member Login</a></li>
           </ul>
@@ -1807,44 +1660,17 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     // ── Counting stats ──
-    function formatMoney(n) {
-      if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-      if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'K';
-      return '$' + n;
-    }
-
     function animateCount(el) {
-      const target = parseFloat(el.dataset.target);
-      const isDecimal = el.dataset.decimal === 'true';
-      const isMoney = el.dataset.format === 'money';
-      const duration = 2000;
-      const start = performance.now();
-
+      var target = parseInt(el.dataset.target);
+      var duration = 2000;
+      var start = performance.now();
       function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = target * ease;
-
-        if (isMoney) {
-          el.textContent = formatMoney(Math.round(current));
-          // Remove the $ span prefix since we handle it
-          const prev = el.previousElementSibling;
-          if (prev && prev.textContent === '$') prev.style.display = 'none';
-        } else if (isDecimal) {
-          el.textContent = current.toFixed(2);
-          const next = el.nextElementSibling;
-          if (next) next.style.display = 'none';
-        } else {
-          el.textContent = Math.round(current);
-        }
-
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * ease);
         if (progress < 1) requestAnimationFrame(update);
-        else {
-          if (isMoney) el.textContent = '$2.8M';
-          else if (isDecimal) el.textContent = '3.25';
-          else el.textContent = target;
-        }
+        else el.textContent = target;
       }
       requestAnimationFrame(update);
     }
@@ -1860,65 +1686,6 @@
 
     const statsSection = document.getElementById('stats');
     if (statsSection) statsObserver.observe(statsSection);
-
-    // ── Interactive Rebate Calculator ──
-    let calcVolume = 1200000;
-    let calcRate = 5.0;
-
-    function getTier(vol) {
-      if (vol < 2000000) return { name: 'Bronze', share: 0.50, cls: 'tier-bronze' };
-      if (vol < 5000000) return { name: 'Silver', share: 0.60, cls: 'tier-silver' };
-      return { name: 'Gold', share: 0.65, cls: 'tier-gold' };
-    }
-
-    function fmtVolume(v) {
-      if (v >= 1000000) return '$' + (v / 1000000).toFixed(v % 1000000 === 0 ? 0 : 1) + 'M';
-      return '$' + (v / 1000).toFixed(0) + 'K';
-    }
-
-    function fmtMoney(v) {
-      return '$' + Math.round(v).toLocaleString('en-US');
-    }
-
-    function tierProgress(vol) {
-      if (vol < 2000000) return ((vol - 500000) / 1500000) * 33;
-      if (vol < 5000000) return 33 + ((vol - 2000000) / 3000000) * 33;
-      return Math.min(66 + ((vol - 5000000) / 5000000) * 34, 100);
-    }
-
-    function updateCalc() {
-      const slider = document.getElementById('vol-slider');
-      if (slider) calcVolume = parseInt(slider.value);
-
-      const tier = getTier(calcVolume);
-      const effRate = calcRate * tier.share;
-      const annual = calcVolume * effRate / 100;
-      const quarterly = annual / 4;
-
-      const volEl = document.getElementById('vol-display');
-      const tierEl = document.getElementById('tier-display');
-      const rateEl = document.getElementById('rate-display');
-      const barEl = document.getElementById('tier-bar');
-      const resultEl = document.getElementById('calc-result');
-      const annualEl = document.getElementById('annual-result');
-
-      if (volEl) volEl.textContent = fmtVolume(calcVolume);
-      if (tierEl) { tierEl.textContent = tier.name; tierEl.className = 'tier-display ' + tier.cls; }
-      if (rateEl) { rateEl.textContent = effRate.toFixed(2) + '%'; rateEl.className = 'tier-display ' + tier.cls; }
-      if (barEl) barEl.style.width = tierProgress(calcVolume) + '%';
-      if (resultEl) resultEl.textContent = fmtMoney(quarterly);
-      if (annualEl) annualEl.textContent = fmtMoney(annual);
-    }
-
-    function setRate(rate, btn) {
-      calcRate = rate;
-      document.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('rate-btn-active'));
-      btn.classList.add('rate-btn-active');
-      updateCalc();
-    }
-
-    // Init on load
-    document.addEventListener('DOMContentLoaded', updateCalc);
 
     // ── Horizontal scroll drag ──
     const track = document.getElementById('benefits-track-outer');
@@ -1942,12 +1709,47 @@
     }
 
     // ── Form submission ──
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-      const form = document.getElementById('apply-form');
-      const success = document.getElementById('form-success');
-      form.style.display = 'none';
-      success.style.display = 'block';
+      var form = document.getElementById('apply-form');
+      var btn = form.querySelector('.form-submit');
+      var errorEl = document.getElementById('form-error');
+      var success = document.getElementById('form-success');
+      var hp = document.getElementById('honeypot').value;
+
+      var payload = {
+        name: document.getElementById('name').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        city: document.getElementById('city').value.trim(),
+        state: document.getElementById('state').value,
+        volume: document.getElementById('volume').value,
+        trade: document.getElementById('trade').value,
+        honeypot: hp
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      errorEl.style.display = 'none';
+
+      try {
+        var res = await fetch('https://kdtdcecqlqwnofsokaei.supabase.co/functions/v1/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'Something went wrong. Please try again.');
+        }
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Request an Invitation \u2192';
+      }
     }
 
     // ── Mobile menu toggle ──
@@ -1991,7 +1793,6 @@
       });
     });
 
-    document.addEventListener('DOMContentLoaded', updateCalc);
   </script>
 </body>
 </html>
