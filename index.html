@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>United Trades — Collective Purchasing for Trade Contractors</title>
   <meta name="description" content="United Trades brings trade contractors together as one purchasing organization. Better material pricing, structured rebate programs, and the buying power your volume actually deserves." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="United Trades — Collective Purchasing for Trade Contractors" />
+  <meta property="og:description" content="United Trades brings trade contractors together as one purchasing organization. Better material pricing, structured rebate programs, and the buying power your volume actually deserves." />
+  <meta property="og:url" content="https://u-trades.com/" />
+  <meta property="og:image" content="https://u-trades.com/public/logos/ut-wordmark-framed-indigo-oxblood.png" />
+  <meta property="og:site_name" content="United Trades" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="United Trades — Collective Purchasing for Trade Contractors" />
+  <meta name="twitter:description" content="Better material pricing and quarterly rebate earnings for trade contractors buying as one organization." />
+  <meta name="twitter:image" content="https://u-trades.com/public/logos/ut-wordmark-framed-indigo-oxblood.png" />
+
   <link rel="icon" href="public/logos/ut-brandmark-indigo-oxblood.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="public/logos/ut-wordmark-framed-cotton-oxblood.png" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── Design Tokens ─── */
@@ -48,6 +64,20 @@
     /* ─── Utilities ─── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 200;
+      background: var(--oxblood);
+      color: var(--cotton);
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
     .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .stagger-1 { transition-delay: 0.1s; }
@@ -674,7 +704,7 @@
       text-align: right;
       max-width: 55%;
     }
-    .comparison-value.dim { color: rgba(245,240,232,0.35); }
+    .comparison-value.dim { color: rgba(245,240,232,0.45); }
     .comparison-value.highlight { color: hsl(349, 80%, 78%); }
     .comparison-divider {
       display: flex;
@@ -876,6 +906,12 @@
       border-color: var(--oxblood-light);
       background: rgba(245,240,232,0.1);
     }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='rgba(245,240,232,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
     .form-group select option { background: var(--indigo); color: var(--cotton); }
     .form-submit {
       width: 100%;
@@ -899,7 +935,7 @@
     }
     .form-note {
       font-size: 12px;
-      color: rgba(245,240,232,0.35);
+      color: rgba(245,240,232,0.5);
       text-align: center;
       margin-top: 12px;
       line-height: 1.5;
@@ -916,6 +952,25 @@
       cursor: not-allowed;
       transform: none !important;
       box-shadow: none !important;
+    }
+
+    /* ─── Focus Styles ─── */
+    .btn-primary:focus-visible,
+    .btn-ghost:focus-visible,
+    .btn-nav:focus-visible,
+    .form-submit:focus-visible {
+      outline: 2px solid hsl(349, 80%, 70%);
+      outline-offset: 2px;
+    }
+    .nav-links a:focus-visible {
+      outline: 2px solid rgba(245,240,232,0.5);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .footer-links a:focus-visible,
+    .footer-legal a:focus-visible {
+      outline: 2px solid rgba(245,240,232,0.4);
+      outline-offset: 4px;
     }
     .form-row-2col {
       display: grid;
@@ -980,7 +1035,7 @@
     }
     .footer-copy {
       font-size: 13px;
-      color: rgba(245,240,232,0.3);
+      color: rgba(245,240,232,0.45);
     }
     .footer-legal {
       display: flex;
@@ -988,7 +1043,7 @@
     }
     .footer-legal a {
       font-size: 13px;
-      color: rgba(245,240,232,0.3);
+      color: rgba(245,240,232,0.45);
       transition: color var(--transition);
     }
     .footer-legal a:hover { color: rgba(245,240,232,0.6); }
@@ -1020,6 +1075,47 @@
       .criteria-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-mobile-toggle { display: block; }
+      #problem, #how-it-works, #comparison, #criteria, #apply { padding: 80px 0; }
+      #why-join { padding: 72px 0; }
+
+      /* Mobile menu */
+      .nav-links.menu-open {
+        display: flex;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        background: rgba(18, 24, 38, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 32px 24px;
+        gap: 8px;
+        z-index: 99;
+        overflow-y: auto;
+        animation: menu-slide-in 0.25s ease-out;
+      }
+      @keyframes menu-slide-in {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .nav-links.menu-open li a {
+        display: block;
+        padding: 14px 0;
+        font-size: 16px;
+        min-height: 48px;
+      }
+      .nav-links.menu-open li .btn-nav {
+        display: block;
+        text-align: center;
+        padding: 14px 22px;
+        margin-top: 8px;
+      }
+      body.menu-open { overflow: hidden; }
+      .nav-mobile-toggle .icon-close { display: none; }
+      body.menu-open .nav-mobile-toggle .icon-menu { display: none; }
+      body.menu-open .nav-mobile-toggle .icon-close { display: block; }
     }
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -1027,11 +1123,46 @@
       .footer-grid { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .benefits-header-row { flex-direction: column; align-items: flex-start; }
+      #problem, #how-it-works, #comparison, #criteria, #apply { padding: 60px 0; }
+      #why-join { padding: 56px 0; }
+      #stats { padding: 48px 0; }
+      .hero-content { padding: 100px 0 80px; }
+      .hero-sub { margin-bottom: 32px; }
+      .form-row-2col { grid-template-columns: 1fr; }
+      .supplier-bar-label { display: none; }
+      .comparison-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .comparison-value { max-width: 100%; text-align: left; }
+    }
+    @media (max-width: 420px) {
+      .stat-card { padding: 24px 16px; }
+      .hero-content { padding: 100px 0 60px; }
+      .hero-sub { margin-bottom: 28px; }
+      .callout-box { padding: 28px 20px; }
+      .criteria-card { padding: 24px 20px; }
+      .comparison-viz { padding: 28px 20px; }
+    }
+    @media (pointer: coarse) {
+      .benefits-track-outer { cursor: default; }
+      .benefits-track-outer:active { cursor: default; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "United Trades Group",
+    "alternateName": "United Trades",
+    "url": "https://u-trades.com",
+    "logo": "https://u-trades.com/public/logos/ut-wordmark-framed-indigo-oxblood.png",
+    "description": "A group purchasing organization for trade contractors in the construction industry.",
+    "email": "membership@u-trades.com"
+  }
+  </script>
 </head>
 
 <body>
+  <a href="#hero" class="skip-link">Skip to content</a>
 
   <!-- ─── Navigation ─── -->
   <nav id="main-nav">
@@ -1048,8 +1179,11 @@
           <li><a href="#apply" class="btn-nav">Request an Invitation</a></li>
         </ul>
         <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg class="icon-menu" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg class="icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
           </svg>
         </button>
       </div>
@@ -1128,9 +1262,9 @@
       <div class="stats-grid">
         <div class="stat-card fade-up">
           <div class="stat-num">
-            <span>$</span><span class="count-up" data-target="700" data-suffix="">0</span><span>M+</span>
+            <span>$</span><span class="count-up" data-target="250" data-suffix="">0</span><span>B+</span>
           </div>
-          <div class="stat-label">In Volume Under Our Leadership</div>
+          <div class="stat-label">Annual Trade Contractor Material Spend in the U.S.</div>
         </div>
         <div class="stat-card fade-up stagger-1">
           <div class="stat-num" style="font-size:clamp(30px,4.5vw,48px);">
@@ -1603,7 +1737,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades" />
+          <img src="public/logos/ut-wordmark-framed-cotton-oxblood.png" alt="United Trades" loading="lazy" />
           <p class="footer-tagline" style="font-style:italic;color:rgba(245,240,232,0.5);font-size:13px;margin-bottom:12px;">Strength in Unity</p>
           <p class="footer-tagline">A by-invitation buying group for trade contractors who want the pricing their volume actually deserves.</p>
           <p class="footer-contact">
@@ -1633,8 +1767,8 @@
       <div class="footer-bottom">
         <span class="footer-copy">© 2026 United Trades Group. All rights reserved.</span>
         <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
+          <a href="#" onclick="return false;" style="cursor:default;opacity:0.7;">Privacy Policy</a>
+          <a href="#" onclick="return false;" style="cursor:default;opacity:0.7;">Terms of Use</a>
         </div>
       </div>
     </div>
@@ -1687,9 +1821,9 @@
     const statsSection = document.getElementById('stats');
     if (statsSection) statsObserver.observe(statsSection);
 
-    // ── Horizontal scroll drag ──
+    // ── Horizontal scroll drag (desktop only) ──
     const track = document.getElementById('benefits-track-outer');
-    if (track) {
+    if (track && !('ontouchstart' in window)) {
       let isDown = false, startX, scrollLeft;
       track.addEventListener('mousedown', e => {
         isDown = true;
@@ -1754,25 +1888,21 @@
 
     // ── Mobile menu toggle ──
     function toggleMobileMenu() {
-      const links = document.querySelector('.nav-links');
-      if (links.style.display === 'flex') {
-        links.style.display = 'none';
-        links.style.position = '';
-        links.style.flexDirection = '';
-      } else {
-        links.style.display = 'flex';
-        links.style.position = 'fixed';
-        links.style.top = '64px';
-        links.style.left = '0';
-        links.style.right = '0';
-        links.style.flexDirection = 'column';
-        links.style.background = 'rgba(18,24,38,0.97)';
-        links.style.padding = '24px';
-        links.style.gap = '20px';
-        links.style.backdropFilter = 'blur(20px)';
-        links.style.zIndex = '99';
-      }
+      document.querySelector('.nav-links').classList.toggle('menu-open');
+      document.body.classList.toggle('menu-open');
     }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const links = document.querySelector('.nav-links');
+      const toggle = document.querySelector('.nav-mobile-toggle');
+      if (links.classList.contains('menu-open') &&
+          !links.contains(e.target) &&
+          !toggle.contains(e.target)) {
+        links.classList.remove('menu-open');
+        document.body.classList.remove('menu-open');
+      }
+    });
 
     // ── Smooth anchor offset for fixed nav ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1786,8 +1916,8 @@
           // close mobile menu
           const links = document.querySelector('.nav-links');
           if (window.innerWidth <= 900) {
-            links.style.display = 'none';
-            links.style.position = '';
+            links.classList.remove('menu-open');
+            document.body.classList.remove('menu-open');
           }
         }
       });
